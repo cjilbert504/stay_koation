@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require './lib/stay_koation'
+
+StayKoation::CLI.new.call
