@@ -29,9 +29,10 @@ class State
     def self.scrape_koa_states
         doc = Nokogiri::HTML(open("https://koa.com/campgrounds/"))
         title = doc.search("h4").text
-        title_array = title.split.map {|c| c}
-        state_array = title_array.delete_if{|ele| ele == "in"}
-        state_array.map {|ele| ele.gsub("Campgrounds", "")}
+        title_array = title.split
+        title_array = title_array.delete_if{|ele| ele == "in"}
+        title_array.map {|ele| ele.gsub!("Campgrounds", "")}
+        new_array = title_array[2, 56]
         binding.pry
     end
 
