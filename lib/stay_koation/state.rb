@@ -4,8 +4,7 @@ class State
 
     attr_accessor :name, :url
 
-    @@all = ["Alabama", "Alaska", "Arizona" , "Arkansas", "California",
-            "Colorado", "Connecticut", "Florida", "Georgia", "Idaho", "New York"]
+    @@all = []
 
     def initialize(name)
         @name = name
@@ -20,8 +19,8 @@ class State
 
     def self.list_display
         puts "--------------------------------------------------------------------------------"
-        puts "1. #{self.all[0]}    2. #{self.all[1]}        3. #{self.all[2]}   4. #{self.all[3]}    5. #{self.all[4]}"
-        puts "6. #{self.all[5]}   7. #{self.all[6]}   8. #{self.all[7]}   9. #{self.all[8]}    10. #{self.all[9]}"
+        puts "1. #{self.all[0].name}    2. #{self.all[1].name}        3. #{self.all[2].name}   4. #{self.all[3].name}    5. #{self.all[4].name}"
+        puts "6. #{self.all[5].name}   7. #{self.all[6].name}   8. #{self.all[7].name}   9. #{self.all[8].name}    10. #{self.all[9].name}"
         puts "--------------------------------------------------------------------------------"
         puts
     end
@@ -31,7 +30,8 @@ class State
          states = doc.search("a h4").text
          states_array = states.split("Campgrounds in ")
          new_array = states_array[1, 47]
-         binding.pry
+         new_array.each {|s| s = self.new(s)}
+         #binding.pry
     end
 
 end

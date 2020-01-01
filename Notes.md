@@ -9,5 +9,3 @@
 
 
 Ask Jenn about adding dependecies after a project is already started and how to update the project to know to require the new dependecies.
-
-Ask Jenn about commiting to github and using github in general.

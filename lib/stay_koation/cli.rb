@@ -1,3 +1,5 @@
+require "pry"
+
 class StayKoation::CLI
 
     attr_accessor :state
@@ -7,8 +9,9 @@ class StayKoation::CLI
         sleep 3
         new_user
         sleep 2
-        state_select_prompt
         State.scrape_koa_states
+        state_select_prompt
+        binding.pry
     end
 
     def welcome_image
@@ -35,8 +38,9 @@ class StayKoation::CLI
         sleep 4
         puts "Enter your number selection here:"
         state_selection = gets.strip.to_i
-        state = State.all[state_selection-1]
-        puts "https://koa.com/states-provinces/#{state.to_s.downcase.gsub(" ", "-")}/"
+        state = State.all[state_selection-1].url
+        puts state
+        # Remove above puts statement after testing method output to the cities class
     end
 
 end
