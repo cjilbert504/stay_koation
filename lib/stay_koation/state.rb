@@ -35,6 +35,4 @@ class State
         binding.pry
     end
 
-    #title_array.map {|c| c.gsub("Campgrounds", "").
-
 end
