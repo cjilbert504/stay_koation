@@ -30,8 +30,11 @@ class State
         doc = Nokogiri::HTML(open("https://koa.com/campgrounds/"))
         title = doc.search("h4").text
         title_array = title.split.map {|c| c}
-        title_array.map {|c| c.gsub("Campgrounds", "")}
+        state_array = title_array.delete_if{|ele| ele == "in"}
+        state_array.map {|ele| ele.gsub("Campgrounds", "")}
         binding.pry
     end
+
+    #title_array.map {|c| c.gsub("Campgrounds", "").
 
 end
