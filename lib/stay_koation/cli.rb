@@ -11,7 +11,7 @@ class StayKoation::CLI
         sleep 2
         State.scrape_koa_states
         state_select_prompt
-        binding.pry
+        #binding.pry
     end
 
     def welcome_image
