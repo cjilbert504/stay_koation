@@ -9,7 +9,6 @@ class StayKoation::CLI
         sleep 2
         State.scrape_koa_states
         state_select_prompt
-        #Campground.scrape_koa_campgrounds
     end
 
     def welcome_image
@@ -36,8 +35,8 @@ class StayKoation::CLI
         sleep 4
         puts "Enter your number selection here:"
         state_selection = gets.strip.to_i
-        state = State.all[state_selection-1].url
-        puts state
+        state_pick = State.all[state_selection-1].url
+        puts state_pick
         # Remove above puts statement after testing method output to the cities class
     end
 
