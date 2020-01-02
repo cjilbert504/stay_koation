@@ -9,7 +9,7 @@ class State
     def initialize(name)
         @name = name
         @cities = []
-        @url = "https://koa.com/states-provinces/#{@name.to_s.downcase.gsub(" ", "-")}/"
+        @url = "https://koa.com/states-provinces/#{@name.downcase.gsub(" ", "-")}/"
         @@all << self
     end
 
