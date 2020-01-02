@@ -2,7 +2,7 @@ require 'pry'
 
 class Campground
 
-    attr_accessor :name, :campgrounds
+    attr_accessor :name, :campgrounds, :state_pick
  
 
     @@all = []
@@ -14,9 +14,16 @@ class Campground
     end
 
     def self.scrape_koa_campgrounds
-        doc = Nokogiri::HTML(open("#{state_pick}"))
+        doc = Nokogiri::HTML(open("#{@state_pick}"))
         campgrounds = doc.search("div.media-heading").text
         campgrounds_array = campgrounds.split(" KOA")
-         puts campgrounds_array
+        puts
+        puts campgrounds_array
+        puts
     end
+
+    def self.state_select(state)
+        @state_pick = state
+    end
+
 end
