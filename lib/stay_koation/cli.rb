@@ -2,8 +2,6 @@ require "pry"
 
 class StayKoation::CLI
 
-    attr_accessor :state
-
     def call
         welcome_image
         sleep 3
@@ -11,7 +9,7 @@ class StayKoation::CLI
         sleep 2
         State.scrape_koa_states
         state_select_prompt
-        #binding.pry
+        #Campground.scrape_koa_campgrounds
     end
 
     def welcome_image

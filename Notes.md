@@ -9,3 +9,13 @@
 
 
 Ask Jenn about adding dependecies after a project is already started and how to update the project to know to require the new dependecies.
+
+States
+    have many campgrounds
+
+Campground
+    has a state
+    has amenities
+
+User
+    can search by state, then view campgrounds in that state and its amenities. User can save campgrounds that they like.
