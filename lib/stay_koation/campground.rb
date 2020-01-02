@@ -2,14 +2,13 @@ require 'pry'
 
 class Campground
 
-    attr_accessor :name, :campgrounds, :state_pick
+    attr_accessor :name, :state_pick
  
 
     @@all = []
     
     def initialize(name)
         @name = name
-        @campgrounds = []
         @@all << self
     end
 
