@@ -8,7 +8,7 @@ class State
 
     def initialize(name)
         @name = name
-        @cities = []
+        @campgrounds = []
         @url = "https://koa.com/states-provinces/#{@name.downcase.gsub(" ", "-")}/"
         @@all << self
     end
@@ -39,7 +39,6 @@ class State
          states_array = states.split("Campgrounds in ")
          new_array = states_array[1, 47]
          new_array.each {|s| s = self.new(s)}
-         #binding.pry
     end
 
 end

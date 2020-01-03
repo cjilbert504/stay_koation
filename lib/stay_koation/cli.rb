@@ -5,7 +5,7 @@ class StayKoation::CLI
     def call
         welcome_image
         sleep 3
-        new_user
+        new_user_greeting
         sleep 2
         State.scrape_koa_states
         state_select_prompt
@@ -19,7 +19,7 @@ class StayKoation::CLI
         puts "============================"
     end
 
-    def new_user
+    def new_user_greeting
         puts
         puts "Please enter your first name:"
         user_name = gets.strip.downcase.capitalize
@@ -38,7 +38,6 @@ class StayKoation::CLI
         state_selection = gets.strip.to_i
         state_pick = State.all[state_selection-1].url
         Campground.state_select(state_pick)
-        # Remove above puts statement after testing method output to the cities class
     end
 
 end
