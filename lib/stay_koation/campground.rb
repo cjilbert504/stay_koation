@@ -7,9 +7,9 @@ class Campground
 
     @@all = []
     
-    def initialize(name, amenities = nil)
+    def initialize(name)
         @name = name
-        @amenities = amenities
+        @amenities = []
         @@all << self
     end
 
