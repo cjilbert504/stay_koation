@@ -10,6 +10,8 @@ class StayKoation::CLI
         State.scrape_koa_states
         state_select_prompt
         Campground.scrape_koa_campgrounds
+        Campground.new_from_scrape
+        binding.pry
     end
 
     def welcome_image
