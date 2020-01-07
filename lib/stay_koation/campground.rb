@@ -46,6 +46,7 @@ class Campground
         @view_selection = gets.strip.to_i
     end
 
+    # Maybe this should be an instance method
     def self.campground_name_normalize
         name = Campground.all[@view_selection-1].name
         name.gsub!(" KOA", "")
@@ -53,6 +54,7 @@ class Campground
         @amenities_url = url_name[0].downcase.gsub(" ", "-")
     end
 
+    # Maybe this should be an instance method
     def self.amenities_scrape
         doc = Nokogiri::HTML(open("https://koa.com/campgrounds/#{@amenities_url}/"))
         amenities = doc.search("ul.gray-bullet-list.row").text
