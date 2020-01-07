@@ -17,6 +17,8 @@ class State
         @@all
     end
 
+    # This method does the initial scrape of the state names from the KOA webpage, parses the data 
+    # into an array, iterates over that array and creates new instances of the State class
     def self.scrape_koa_states
         doc = Nokogiri::HTML(open("https://koa.com/campgrounds/"))
         states = doc.search("a h4").text
@@ -25,6 +27,8 @@ class State
         new_array.each {|s| s = self.new(s)}
    end
 
+    # This method arranges all of the states from the @@all array into a menu type display for the 
+    # user to select from
     def self.list_display
         puts "------------------------------------------------------------------------------------------------------"
         puts " 1. #{self.all[0].name}           2. #{self.all[1].name}           3. #{self.all[2].name}        4. #{self.all[3].name}            5. #{self.all[4].name}"
