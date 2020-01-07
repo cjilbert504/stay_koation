@@ -2,7 +2,7 @@ require 'pry'
 
 class Campground
 
-    attr_accessor :name, :amenities, :state_pick, :campgrounds_array, :view_selection, :amenities_url
+    attr_accessor :name, :amenities, :state_pick, :campgrounds_array, :view_selection, :amenities_url, :state
     
  
 
@@ -56,11 +56,11 @@ class Campground
     def self.amenities_scrape
         doc = Nokogiri::HTML(open("https://koa.com/campgrounds/#{@amenities_url}/"))
         amenities = doc.search("ul.gray-bullet-list.row").text
-        amenities_array = amenities
+        @amenities_array = amenities
         puts
         puts "Amenities:"
         puts "=========="
-        puts amenities_array.gsub("\t", "")
+        puts @amenities_array.gsub("\t", "")
         puts 
         puts "($) = Additional Charge"
         puts
