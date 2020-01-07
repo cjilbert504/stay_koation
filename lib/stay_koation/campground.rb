@@ -59,6 +59,7 @@ class Campground
         amenities_array = amenities.split
         puts
         puts amenities_array
+        #Need to figure out a better way to parse this data
     end
 
 
