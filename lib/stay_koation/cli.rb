@@ -12,7 +12,7 @@ class StayKoation::CLI
         Campground.scrape_koa_campgrounds
         Campground.new_from_scrape
         Campground.campground_menu
-        Campground.view_amenitites 
+        Campground.view_amenitites_selection
         binding.pry
     end
 

@@ -41,10 +41,9 @@ class Campground
         end
     end
 
-    def self.view_amenitites 
+    def self.view_amenitites_selection 
         puts "Please select the number of the campground whose amenities you would like to view:"
-        view_selection = gets.strip.to_i
-        puts view_selection
+        @view_selection = gets.strip.to_i
     end
 
     # name = "Dectaur / Wheeler Lake KOA"
