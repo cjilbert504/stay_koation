@@ -48,12 +48,9 @@ class Campground
 
     def self.campground_name_normalize
         name = Campground.all[@view_selection-1].name
-        puts name
+        name.gsub!("KOA", "")
+        url_name = name.split("/")
+        @amenities_url = url_name[0].downcase
     end
-
-    # name = "Dectaur / Wheeler Lake KOA"
-    # name.gsub!("KOA", "")
-    # url_name = name.split("/")
-    # puts url_name[0].downcase
     
 end
