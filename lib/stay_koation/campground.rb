@@ -41,4 +41,9 @@ class Campground
         end
     end
 
+    # name = "Dectaur / Wheeler Lake KOA"
+    # name.gsub!("KOA", "")
+    # url_name = name.split("/")
+    # puts url_name[0].downcase
+    
 end
