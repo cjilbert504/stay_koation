@@ -50,18 +50,25 @@ class Campground
         name = Campground.all[@view_selection-1].name
         name.gsub!(" KOA", "")
         url_name = name.split(" / ")
-        @amenities_url = url_name[0].downcase
+        @amenities_url = url_name[0].downcase.gsub(" ", "-")
     end
 
     def self.amenities_scrape
         doc = Nokogiri::HTML(open("https://koa.com/campgrounds/#{@amenities_url}/"))
-        amenities = doc.search("li.col-sm-6.col-xl-4").text
-        amenities_array = amenities.split
+        amenities = doc.search("ul.gray-bullet-list.row").text
+        amenities_array = amenities
         puts
-        puts amenities_array
+        #binding.pry
+        puts "Amenities:"
+        puts "=========="
+        puts amenities_array.gsub("\t", "")
+        puts 
+        puts "($) = Additional Charge"
+        puts
+        puts
         #Need to figure out a better way to parse this data
     end
 
 
-    
+    #li.col-sm-6.col-xl-4
 end
