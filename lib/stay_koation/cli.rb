@@ -38,7 +38,8 @@ class StayKoation::CLI
 
     # This method prompts the user to select a state, displays the state select menu, gets the users
     # selection, gets the selected states url attribute and passes it to the Campground state_select
-    # method to then be used by the Campground..scrape_koa_campgrounds method
+    # method to then be used by the Campground..scrape_koa_campgrounds method; Perhaps this belongs 
+    # in the State class and probably needs to be refactored into smaller methods that only do one job
     def state_select_prompt
         puts
         puts "Please select the number of the state in which you would like to start your KOA campsite search from the following list:"
