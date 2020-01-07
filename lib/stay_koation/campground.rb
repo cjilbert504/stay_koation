@@ -32,4 +32,13 @@ class Campground
         @campgrounds_array.each {|x| x = self.new(x)}
     end
 
+    def self.campground_menu
+        counter = 1
+        puts
+        self.all.each do |x| 
+            puts "#{counter}. #{x.name}"
+            counter += 1
+        end
+    end
+
 end
