@@ -12,8 +12,8 @@ class StayKoation::CLI
         Campground.scrape_koa_campgrounds
         Campground.new_from_scrape
         Campground.campground_menu
-        Campground.view_amenitites_selection
-        binding.pry
+        Campground.view_amenities_selection
+        Campground.campground_name_normalize
     end
 
     def welcome_image
