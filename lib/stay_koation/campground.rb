@@ -2,7 +2,7 @@ require 'pry'
 
 class Campground
 
-    attr_accessor :name, :amenities, :state_pick, :campgrounds_array
+    attr_accessor :name, :amenities, :state_pick, :campgrounds_array, :view_selection
     
  
 
@@ -40,6 +40,12 @@ class Campground
             counter += 1
         end
     end
+
+    def view_amenities_prompt
+        puts "Please enter the number of the campground whose amenities you would like to view:"
+        @view_selection = input.gets.strip.to_i
+    end
+
 
     # name = "Dectaur / Wheeler Lake KOA"
     # name.gsub!("KOA", "")
