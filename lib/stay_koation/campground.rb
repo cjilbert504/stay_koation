@@ -58,7 +58,6 @@ class Campground
         amenities = doc.search("ul.gray-bullet-list.row").text
         amenities_array = amenities
         puts
-        #binding.pry
         puts "Amenities:"
         puts "=========="
         puts amenities_array.gsub("\t", "")
@@ -66,9 +65,6 @@ class Campground
         puts "($) = Additional Charge"
         puts
         puts
-        #Need to figure out a better way to parse this data
     end
 
-
-    #li.col-sm-6.col-xl-4
 end
