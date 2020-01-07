@@ -14,8 +14,4 @@ class User
         @@all
     end
 
-    def save_campground(campground)
-        @saved_sites << campground
-    end
-
 end
