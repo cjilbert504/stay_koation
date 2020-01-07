@@ -11,6 +11,7 @@ class StayKoation::CLI
         state_select_prompt
         Campground.scrape_koa_campgrounds
         Campground.new_from_scrape
+        Campground.campground_menu
         binding.pry
     end
 
