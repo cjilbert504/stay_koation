@@ -13,6 +13,10 @@ class Campground
         @@all << self
     end
 
+    def self.state_select(state)
+        @state_pick = state
+    end
+
     def self.scrape_koa_campgrounds
         doc = Nokogiri::HTML(open("#{@state_pick}"))
         campgrounds = doc.search("div.media-heading").text
@@ -22,8 +26,8 @@ class Campground
         puts
     end
 
-    def self.state_select(state)
-        @state_pick = state
+    def new_from_scrape
+        @campgrounds_array.each {|x| x = self.new(x)}
     end
 
 end
