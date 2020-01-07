@@ -41,11 +41,11 @@ class Campground
         end
     end
 
-    def view_amenities_prompt
-        puts "Please enter the number of the campground whose amenities you would like to view:"
-        @view_selection = input.gets.strip.to_i
+    def self.view_amenitites 
+        puts "Please select the number of the campground whose amenities you would like to view:"
+        view_selection = gets.strip.to_i
+        puts view_selection
     end
-
 
     # name = "Dectaur / Wheeler Lake KOA"
     # name.gsub!("KOA", "")
