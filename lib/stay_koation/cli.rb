@@ -14,6 +14,7 @@ class StayKoation::CLI
         Campground.campground_menu
         Campground.view_amenities_selection
         Campground.campground_name_normalize
+        Campground.amenities_scrape
     end
 
     def welcome_image

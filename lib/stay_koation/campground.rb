@@ -2,7 +2,7 @@ require 'pry'
 
 class Campground
 
-    attr_accessor :name, :amenities, :state_pick, :campgrounds_array, :view_selection
+    attr_accessor :name, :amenities, :state_pick, :campgrounds_array, :view_selection, :amenities_url
     
  
 
@@ -48,9 +48,19 @@ class Campground
 
     def self.campground_name_normalize
         name = Campground.all[@view_selection-1].name
-        name.gsub!("KOA", "")
-        url_name = name.split("/")
+        name.gsub!(" KOA", "")
+        url_name = name.split(" / ")
         @amenities_url = url_name[0].downcase
     end
+
+    def self.amenities_scrape
+        doc = Nokogiri::HTML(open("https://koa.com/campgrounds/#{@amenities_url}/"))
+        amenities = doc.search("li.col-sm-6.col-xl-4").text
+        amenities_array = amenities.split
+        puts
+        puts amenities_array
+    end
+
+
     
 end
