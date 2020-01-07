@@ -8,7 +8,12 @@
 8. Return a list of ameneties at the selected campsite
 
 
-Ask Jenn about adding dependecies after a project is already started and how to update the project to know to require the new dependecies.
+To Do's
+1. Address object relationships
+2. Address Users being able to save campsites
+3. Address being able to cycle through the program multiple times
+4. Address users being able to view their saved sites and that campgrounds amenities
+5. Address campground objects being able to know their individual amenities
 
 States
     have many campgrounds
