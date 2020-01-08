@@ -30,7 +30,7 @@ class Campground
 
     def self.new_from_scrape
         @campgrounds_array.each {|x| self.new(x)}
-        # binding.pry
+        binding.pry
     end
 
     def self.campground_menu

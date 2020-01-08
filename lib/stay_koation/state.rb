@@ -41,4 +41,13 @@ class State
         puts
     end
 
+    def add_campgrounds(campgrounds)
+        campgrounds.each do |x|
+            @campgrounds << x
+        end
+    end
+
+    def campgrounds
+        @campgrounds
+    end
 end
