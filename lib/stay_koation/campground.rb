@@ -2,7 +2,7 @@ require 'pry'
 
 class Campground
 
-    attr_accessor :name, :amenities, :state_pick, :campgrounds_array, :view_selection, :amenities_url, :state
+    attr_accessor :name, :amenities, :state_pick, :campgrounds_array, :view_selection, :amenities_url
     
  
 
@@ -29,7 +29,8 @@ class Campground
     end
 
     def self.new_from_scrape
-        @campgrounds_array.each {|x| x = self.new(x)}
+        @campgrounds_array.each {|x| self.new(x)}
+        # binding.pry
     end
 
     def self.campground_menu
