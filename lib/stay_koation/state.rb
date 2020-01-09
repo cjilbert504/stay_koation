@@ -2,7 +2,7 @@ require 'pry'
 
 class State
 
-    attr_accessor :name, :url
+    attr_accessor :name, :url, :campgrounds
 
     @@all = []
 
@@ -41,13 +41,4 @@ class State
         puts
     end
 
-    def add_campgrounds(campgrounds)
-        campgrounds.each do |x|
-            @campgrounds << x
-        end
-    end
-
-    def campgrounds
-        @campgrounds
-    end
 end
