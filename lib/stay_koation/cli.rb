@@ -33,6 +33,11 @@ class StayKoation::CLI
         puts "Hello, #{user_name}!"
     end
 
+    def end_app
+        puts "Thanks and we hope you enjoy your next Stay KOAtion!!!"
+        abort
+    end
+
     def state_select_prompt
         puts
         puts "Please select the number of the state in which you would like to start your KOA campsite search from the following list:"
