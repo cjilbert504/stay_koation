@@ -15,6 +15,7 @@ class StayKoation::CLI
         Campground.new_from_scrape 
         Campground.campground_menu
         Campground.view_amenities_selection
+        rerun_app
     end
 
     def welcome_image
@@ -33,8 +34,23 @@ class StayKoation::CLI
         puts "Hello, #{user_name}!"
     end
 
+    def rerun_app
+        puts "If you would like to search states again enter (y) or to exit the program enter (n)"
+        choice = gets.chomp
+            case choice.downcase
+                when "y"
+                    Campground.all.clear
+                    call
+                when "n"
+                    end_app
+                end
+    end
+
     def end_app
+        puts
         puts "Thanks and we hope you enjoy your next Stay KOAtion!!!"
+        puts
+        puts
         abort
     end
 
