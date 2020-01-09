@@ -6,9 +6,9 @@ class StayKoation::CLI
         
     def call
         welcome_image    
-        #sleep 3
+        sleep 3
         new_user_greeting 
-        #sleep 2
+        sleep 2
         State.scrape_koa_states 
         state_select_prompt 
         Campground.scrape_koa_campgrounds 
@@ -57,9 +57,9 @@ class StayKoation::CLI
     def state_select_prompt
         puts
         puts "Please select the number of the state in which you would like to start your KOA campsite search from the following list:"
-        #sleep 4
+        sleep 4
         State.list_display
-        #sleep 4
+        sleep 4
         puts "Enter your number selection here:"
         state_selection = gets.strip.to_i
         state_pick = State.all[state_selection-1]
