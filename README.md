@@ -1,8 +1,6 @@
 # StayKoation
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/stay_koation`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to Stay KOAtion! Ah, the beloved staycation, time off from work in the warm embrace of your kingdom what could be better? How about getting out and experience new places?! KOA's offer great accommodations and at a great value. And hopefully by now you appreciate my clever or not so clever play on words or at least you understand the name a little better. 
 
 ## Installation
 
@@ -22,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Use this gem to search KOA campgrounds in the United States and view the amenities at the selected campground.
 
 ## Development
 
