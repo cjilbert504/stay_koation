@@ -61,7 +61,6 @@ class Campground
         doc = Nokogiri::HTML(open("https://koa.com/campgrounds/#{@amenities_url}/"))
         amenities = doc.search("ul.gray-bullet-list.row").text
         @amenities << amenities
-        #binding.pry
         @amenities[0].gsub!("\t\t\t\t\t\t\t\t", "")
         puts
         puts "Amenities:"
