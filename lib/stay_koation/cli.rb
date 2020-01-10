@@ -40,7 +40,14 @@ class StayKoation::CLI
             case choice.downcase
                 when "y"
                     Campground.all.clear
-                    call
+                    State.all.clear
+                    State.scrape_koa_states 
+                    state_select_prompt 
+                    Campground.scrape_koa_campgrounds 
+                    Campground.new_from_scrape 
+                    Campground.campground_menu
+                    Campground.view_amenities_selection
+                    rerun_app
                 when "n"
                     end_app
                 end
