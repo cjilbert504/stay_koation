@@ -11,6 +11,10 @@ class StayKoation::CLI
         sleep 2
         State.scrape_koa_states 
         state_select_prompt 
+        sleep 4
+        State.list_display
+        sleep 4
+        state_user_input
         Campground.scrape_koa_campgrounds 
         Campground.new_from_scrape 
         Campground.campground_menu
@@ -30,13 +34,25 @@ class StayKoation::CLI
         puts "Please enter your first name:"
         user_name = gets.strip.downcase.capitalize
         User.new(user_name)
-        if user_name == ""
-            puts
-            puts "Hello there you unidentified seeker of sites you!"
-        else
-            puts
-            puts "Hello, #{user_name}!"
-        end
+            if user_name == ""
+                puts
+                puts "Hello there you unidentified seeker of sites you!"
+            else
+                puts
+                puts "Hello, #{user_name}!"
+            end
+    end
+
+    def state_select_prompt
+        puts
+        puts "Please select the number of the state in which you would like to start your KOA campsite search from the following list:"
+    end
+
+    def state_user_input
+        puts "Enter your number selection here:"
+        state_selection = gets.strip.to_i
+        state_pick = State.all[state_selection-1]
+        Campground.state_select(state_pick)
     end
 
     def rerun_app
@@ -48,6 +64,10 @@ class StayKoation::CLI
                     State.all.clear
                     State.scrape_koa_states 
                     state_select_prompt 
+                    sleep 4
+                    State.list_display
+                    sleep 4
+                    state_user_input
                     Campground.scrape_koa_campgrounds 
                     Campground.new_from_scrape 
                     Campground.campground_menu
@@ -64,18 +84,6 @@ class StayKoation::CLI
         puts
         puts
         abort
-    end
-
-    def state_select_prompt
-        puts
-        puts "Please select the number of the state in which you would like to start your KOA campsite search from the following list:"
-        sleep 4
-        State.list_display
-        sleep 4
-        puts "Enter your number selection here:"
-        state_selection = gets.strip.to_i
-        state_pick = State.all[state_selection-1]
-        Campground.state_select(state_pick)
     end
 
 end

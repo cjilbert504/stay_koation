@@ -24,3 +24,4 @@ Campground
 
 User
     can search by state, then view campgrounds in that state and its amenities. User can save campgrounds that they like.
+
