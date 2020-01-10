@@ -27,10 +27,10 @@ class StayKoation::CLI
         puts "============================"
         puts "= Welcome to Stay KOAtion! ="
         puts "============================"
+        puts
     end
 
     def new_user_greeting
-        puts
         puts "Please enter your first name:"
         user_name = gets.strip.downcase.capitalize
         User.new(user_name)
