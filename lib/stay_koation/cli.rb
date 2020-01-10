@@ -30,8 +30,13 @@ class StayKoation::CLI
         puts "Please enter your first name:"
         user_name = gets.strip.downcase.capitalize
         User.new(user_name)
-        puts
-        puts "Hello, #{user_name}!"
+        if user_name == ""
+            puts
+            puts "Hello there you unidentified seeker of sites you!"
+        else
+            puts
+            puts "Hello, #{user_name}!"
+        end
     end
 
     def rerun_app
