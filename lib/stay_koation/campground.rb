@@ -2,7 +2,7 @@ require 'pry'
 
 class Campground
 
-    attr_accessor :name, :amenities, :state_pick, :campgrounds_array, :view_selection, :amenities_url, :state
+    attr_accessor :name, :amenities, :state_pick, :campgrounds_array, :amenities_url, :state
     
  
 
@@ -45,8 +45,8 @@ class Campground
 
     def self.view_amenities_selection 
         puts "Please select the number of the campground whose amenities you would like to view:"
-        @view_selection = gets.strip.to_i
-        campground = Campground.all[@view_selection-1]
+        view_selection = gets.strip.to_i
+        campground = Campground.all[view_selection-1]
         campground.campground_name_normalize
     end
 
