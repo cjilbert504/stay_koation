@@ -25,11 +25,12 @@ class Campground
     def self.scrape_koa_campgrounds
         doc = Nokogiri::HTML(open("#{@state_pick.url}"))
         campgrounds = doc.search("div.media-heading").text
-        @campgrounds_array = campgrounds.split(" KOA")
+        campgrounds_array = campgrounds.split(" KOA")
+        Campground.new_from_scrape(campgrounds_array)
     end
 
-    def self.new_from_scrape
-        @campgrounds_array.each do |x| 
+    def self.new_from_scrape(camps)
+        camps.each do |x| 
             @state_pick.campgrounds << self.new(x)
         end
     end
@@ -43,10 +44,8 @@ class Campground
         end
     end
 
-    def self.view_amenities_selection 
-        puts "Please select the number of the campground whose amenities you would like to view:"
-        view_selection = gets.strip.to_i
-        campground = Campground.all[view_selection-1]
+    def get_amenities(camp)
+        campground = camp
         campground.campground_name_normalize
     end
 

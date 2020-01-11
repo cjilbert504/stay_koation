@@ -8,17 +8,13 @@ class StayKoation::CLI
         welcome_image    
         sleep 3
         new_user_greeting 
-        sleep 2
-        State.scrape_koa_states 
+        sleep 2 
         state_select_prompt 
-        sleep 4
-        State.list_display
         sleep 4
         state_user_input
         Campground.scrape_koa_campgrounds 
-        Campground.new_from_scrape 
         Campground.campground_menu
-        Campground.view_amenities_selection
+        view_amenities_prompt
         rerun_app
     end
 
@@ -46,6 +42,9 @@ class StayKoation::CLI
     def state_select_prompt
         puts
         puts "Please select the number of the state in which you would like to start your KOA campsite search from the following list:"
+        State.scrape_koa_states 
+        sleep 4
+        State.list_display
     end
 
     def state_user_input
@@ -55,6 +54,13 @@ class StayKoation::CLI
         Campground.state_select(state_pick)
     end
 
+    def view_amenities_prompt
+        puts "Please select the number of the campground whose amenities you would like to view:"
+        selection = gets.strip.to_i - 1
+        camp = Campground.all[selection]
+        camp.get_amenities(camp)
+    end
+
     def rerun_app
         puts "If you would like to search states again enter (y) or to exit the program enter (n)"
         choice = gets.chomp
@@ -62,16 +68,12 @@ class StayKoation::CLI
                 when "y"
                     Campground.all.clear
                     State.all.clear
-                    State.scrape_koa_states 
                     state_select_prompt 
-                    sleep 4
-                    State.list_display
                     sleep 4
                     state_user_input
                     Campground.scrape_koa_campgrounds 
-                    Campground.new_from_scrape 
                     Campground.campground_menu
-                    Campground.view_amenities_selection
+                    view_amenities_prompt
                     rerun_app
                 when "n"
                     end_app
