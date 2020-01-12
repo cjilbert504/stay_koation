@@ -29,11 +29,11 @@ class StayKoation::CLI
     def new_user_greeting
         puts "Please enter your first name:"
         user_name = gets.strip.downcase.capitalize
-        User.new(user_name)
             if user_name == ""
                 puts
                 puts "Hello there you unidentified seeker of sites you!"
             else
+                User.new(user_name)
                 puts
                 puts "Hello, #{user_name}!"
             end
