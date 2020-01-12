@@ -42,6 +42,7 @@ class Campground
             puts "#{counter}. #{x.name}"
             counter += 1
         end
+        puts
     end
 
     def get_amenities(camp)
