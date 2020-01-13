@@ -18,11 +18,8 @@ class Campground
         @@all
     end
 
-    def self.state_select(state)
+    def self.scrape_koa_campgrounds(state)
         @state_pick = state
-    end
-
-    def self.scrape_koa_campgrounds
         doc = Nokogiri::HTML(open("#{@state_pick.url}"))
         campgrounds = doc.search("div.media-heading").text
         campgrounds_array = campgrounds.split(" KOA")
@@ -46,12 +43,10 @@ class Campground
     end
 
     def get_amenities(camp)
-        campground = camp
-        campground.campground_name_normalize
+        camp.campground_name_normalize
     end
 
     def campground_name_normalize
-        @name.gsub!(" KOA", "")
         url_name = @name.split(" / ")
         @amenities_url = url_name[0].downcase.gsub(" ", "-")
         amenities_scrape

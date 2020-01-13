@@ -12,7 +12,6 @@ class StayKoation::CLI
         state_select_prompt 
         sleep 4
         state_user_input
-        Campground.scrape_koa_campgrounds 
         Campground.campground_menu
         view_amenities_prompt
         rerun_app
@@ -51,7 +50,7 @@ class StayKoation::CLI
         puts "Enter your number selection here:"
         state_selection = gets.strip.to_i
         state_pick = State.all[state_selection-1]
-        Campground.state_select(state_pick)
+        Campground.scrape_koa_campgrounds(state_pick)
     end
 
     def view_amenities_prompt
@@ -71,7 +70,6 @@ class StayKoation::CLI
                     state_select_prompt 
                     sleep 4
                     state_user_input
-                    Campground.scrape_koa_campgrounds 
                     Campground.campground_menu
                     view_amenities_prompt
                     rerun_app
