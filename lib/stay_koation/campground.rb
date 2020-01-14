@@ -53,6 +53,12 @@ class Campground
     end
 
     def amenities_scrape
+        begin
+            doc = Nokogiri::HTML(open("https://koa.com/campgrounds/#{@amenities_url}/"))
+        rescue
+            url_name = @name.split(" / ")
+            @amenities_url = url_name[1].downcase.gsub(" ", "-")
+        end
         doc = Nokogiri::HTML(open("https://koa.com/campgrounds/#{@amenities_url}/"))
         amenities = doc.search("ul.gray-bullet-list.row").text
         @amenities << amenities

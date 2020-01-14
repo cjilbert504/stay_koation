@@ -73,7 +73,7 @@ class StayKoation::CLI
                     Campground.all.clear
                     State.all.clear
                     state_select_prompt 
-                    sleep 4
+                    #sleep 4
                     state_user_input
                     Campground.campground_menu
                     view_amenities_prompt
