@@ -7,11 +7,11 @@ class StayKoation::CLI
     def call
         welcome_image 
         State.scrape_koa_states    
-        #sleep 3
+        sleep 3
         new_user_greeting 
-        #sleep 2 
+        sleep 2 
         state_select_prompt 
-        #sleep 4
+        sleep 4
         state_user_input
         Campground.campground_menu
         view_amenities_prompt
@@ -29,7 +29,11 @@ class StayKoation::CLI
     def new_user_greeting
         puts "Please enter your first name or press enter to continue as a guest:"
         user_name = gets.strip.downcase.capitalize
-            if user_name == "" 
+            if user_name.to_i > 0
+                puts
+                puts "Invalid input, please try again"
+                new_user_greeting
+            elsif user_name == "" 
                 puts
                 puts "Hello there you unidentified seeker of sites you!"
             else 
@@ -42,7 +46,7 @@ class StayKoation::CLI
     def state_select_prompt
         puts
         puts "Please select the number of the state in which you would like to start your KOA campsite search from the following list:"
-        #sleep 4
+        sleep 4
         State.list_display
     end
 
@@ -75,9 +79,9 @@ class StayKoation::CLI
         choice = gets.chomp
             case choice.downcase
                 when "y"
-                    # Campground.all.clear
+                    Campground.all.clear
                     state_select_prompt 
-                    #sleep 4
+                    sleep 4
                     state_user_input
                     Campground.campground_menu
                     view_amenities_prompt

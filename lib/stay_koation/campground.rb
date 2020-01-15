@@ -43,7 +43,6 @@ class Campground
     end
 
     def get_amenities(camp, cli_inst)
-
         camp.campground_name_normalize(cli_inst)
     end
 
@@ -60,14 +59,17 @@ class Campground
             begin
             url_name = @name.split(" / ")
             @amenities_url = url_name[1].downcase.gsub(" ", "-")
+            doc = Nokogiri::HTML(open("https://koa.com/campgrounds/#{@amenities_url}/"))
+            binding.pry
             rescue
                 puts "SORRY! No further information can be gathered at this time."
+                sleep 3
                 Campground.campground_menu
                 cli_inst.view_amenities_prompt
                 cli_inst.rerun_app
             end
         end
-        doc = Nokogiri::HTML(open("https://koa.com/campgrounds/#{@amenities_url}/"))
+        #doc = Nokogiri::HTML(open("https://koa.com/campgrounds/#{@amenities_url}/"))
         amenities = doc.search("ul.gray-bullet-list.row").text
         @amenities << amenities
         @amenities[0].gsub!("\t\t\t\t\t\t\t\t", "")
