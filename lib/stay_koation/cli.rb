@@ -5,7 +5,8 @@ class StayKoation::CLI
         
         
     def call
-        welcome_image    
+        welcome_image 
+        State.scrape_koa_states    
         #sleep 3
         new_user_greeting 
         #sleep 2 
@@ -41,7 +42,6 @@ class StayKoation::CLI
     def state_select_prompt
         puts
         puts "Please select the number of the state in which you would like to start your KOA campsite search from the following list:"
-        State.scrape_koa_states 
         #sleep 4
         State.list_display
     end
@@ -60,9 +60,14 @@ class StayKoation::CLI
 
     def view_amenities_prompt
         puts "Please select the number of the campground whose amenities you would like to view:"
-        selection = gets.strip.to_i - 1
-        camp = Campground.all[selection]
-        camp.get_amenities(camp)
+        selection = gets.strip.to_i 
+        if selection <= 0 || selection > Campground.all.length || selection == String
+            puts "Wrong input for selection, please try again."
+            view_amenities_prompt
+        else
+            camp = Campground.all[selection - 1]
+            camp.get_amenities(camp, self)
+        end
     end
 
     def rerun_app
@@ -70,8 +75,7 @@ class StayKoation::CLI
         choice = gets.chomp
             case choice.downcase
                 when "y"
-                    Campground.all.clear
-                    State.all.clear
+                    # Campground.all.clear
                     state_select_prompt 
                     #sleep 4
                     state_user_input

@@ -42,22 +42,30 @@ class Campground
         puts
     end
 
-    def get_amenities(camp)
-        camp.campground_name_normalize
+    def get_amenities(camp, cli_inst)
+
+        camp.campground_name_normalize(cli_inst)
     end
 
-    def campground_name_normalize
+    def campground_name_normalize(cli_inst)
         url_name = @name.split(" / ")
         @amenities_url = url_name[0].downcase.gsub(" ", "-")
-        amenities_scrape
+        amenities_scrape(cli_inst)
     end
 
-    def amenities_scrape
+    def amenities_scrape(cli_inst)
         begin
             doc = Nokogiri::HTML(open("https://koa.com/campgrounds/#{@amenities_url}/"))
         rescue
+            begin
             url_name = @name.split(" / ")
             @amenities_url = url_name[1].downcase.gsub(" ", "-")
+            rescue
+                puts "SORRY! No further information can be gathered at this time."
+                Campground.campground_menu
+                cli_inst.view_amenities_prompt
+                cli_inst.rerun_app
+            end
         end
         doc = Nokogiri::HTML(open("https://koa.com/campgrounds/#{@amenities_url}/"))
         amenities = doc.search("ul.gray-bullet-list.row").text
