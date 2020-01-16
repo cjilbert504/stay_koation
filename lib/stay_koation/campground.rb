@@ -20,10 +20,13 @@ class Campground
 
     def self.scrape_koa_campgrounds(state)
         @state_pick = state
-        doc = Nokogiri::HTML(open("#{@state_pick.url}"))
-        campgrounds = doc.search("div.media-heading").text
-        campgrounds_array = campgrounds.split(" KOA")
-        Campground.new_from_scrape(campgrounds_array)
+        if @state_pick.campgrounds.empty?
+
+            doc = Nokogiri::HTML(open("#{@state_pick.url}"))
+            campgrounds = doc.search("div.media-heading").text
+            campgrounds_array = campgrounds.split(" KOA")
+            Campground.new_from_scrape(campgrounds_array)
+        end
     end
 
     def self.new_from_scrape(camps)
@@ -53,6 +56,7 @@ class Campground
     end
 
     def amenities_scrape(cli_inst)
+        if @amenities.empty?
         begin
             doc = Nokogiri::HTML(open("https://koa.com/campgrounds/#{@amenities_url}/"))
         rescue
@@ -60,7 +64,7 @@ class Campground
             url_name = @name.split(" / ")
             @amenities_url = url_name[1].downcase.gsub(" ", "-")
             doc = Nokogiri::HTML(open("https://koa.com/campgrounds/#{@amenities_url}/"))
-            binding.pry
+            #binding.pry
             rescue
                 puts "SORRY! No further information can be gathered at this time."
                 sleep 3
@@ -72,6 +76,7 @@ class Campground
         #doc = Nokogiri::HTML(open("https://koa.com/campgrounds/#{@amenities_url}/"))
         amenities = doc.search("ul.gray-bullet-list.row").text
         @amenities << amenities
+    end
         @amenities[0].gsub!("\t\t\t\t\t\t\t\t", "")
         puts
         puts "Amenities:"
@@ -81,6 +86,7 @@ class Campground
         puts "($) = Additional Charge"
         puts
         puts
+    
     end
 
 end

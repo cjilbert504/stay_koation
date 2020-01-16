@@ -79,7 +79,7 @@ class StayKoation::CLI
         choice = gets.chomp
             case choice.downcase
                 when "y"
-                    Campground.all.clear
+                    #Campground.all.clear
                     state_select_prompt 
                     sleep 4
                     state_user_input
