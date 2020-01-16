@@ -88,6 +88,9 @@ class StayKoation::CLI
                     rerun_app
                 when "n"
                     end_app
+                else
+                   puts "Invalid input"
+                   rerun_app
                 end
     end
 
